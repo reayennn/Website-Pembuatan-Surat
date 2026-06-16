@@ -188,6 +188,7 @@
                             <p class="section-label">(1) Paragraf Pembuka <span class="editable-badge">[Ketik Di Sini]</span></p>
                             <div id="quill-pembuka" class="quill-box"></div>
                             <textarea name="isi_pembuka" id="isi_pembuka" class="sr-only">{!! old('isi_pembuka') !!}</textarea>
+                            <p class="text-xs text-gray-400 mt-1 italic">Contoh: <em>Yang bertanda tangan di bawah ini Kepala Desa Karombo...</em></p>
                         </div>
 
                         {{-- TABEL DATA — INFO SAJA (tidak diedit) --}}
@@ -213,6 +214,7 @@
                             <p class="section-label">(2) Paragraf Penutup <span class="editable-badge">[Ketik Di Sini]</span></p>
                             <div id="quill-penutup" class="quill-box"></div>
                             <textarea name="isi_penutup" id="isi_penutup" class="sr-only">{!! old('isi_penutup') !!}</textarea>
+                            <p class="text-xs text-gray-400 mt-1 italic">Contoh: <em>Demikian surat keterangan ini kami berikan untuk dipergunakan sebagaimana mestinya.</em></p>
                         </div>
 
                         {{-- Persyaratan --}}
@@ -333,8 +335,24 @@
         var taPembuka = document.getElementById('isi_pembuka');
         var taPenutup = document.getElementById('isi_penutup');
 
-        if (taPembuka.value.trim()) quillPembuka.root.innerHTML = taPembuka.value;
-        if (taPenutup.value.trim()) quillPenutup.root.innerHTML = taPenutup.value;
+        if (taPembuka.value.trim()) {
+            quillPembuka.root.innerHTML = taPembuka.value;
+        } else {
+            // Default text sesuai format surat resmi Desa Karombo
+            var defaultPembuka = '<p>Yang bertanda tangan di bawah ini Kepala Desa Karombo Kecamatan Pekat Kabupaten Dompu menerangkan dengan sebenar &#x2011; sebenarnya kepada :</p>';
+            quillPembuka.root.innerHTML = defaultPembuka;
+            taPembuka.value = defaultPembuka;
+            document.getElementById('p_pembuka').innerHTML = defaultPembuka;
+        }
+        if (taPenutup.value.trim()) {
+            quillPenutup.root.innerHTML = taPenutup.value;
+        } else {
+            // Default penutup sesuai format surat resmi
+            var defaultPenutup = '<p>Bahwa yang tersebut namanya di atas adalah benar-benar warga / penduduk Asli Desa Karombo Kecamatan Pekat Kabupaten Dompu dan sampai saat surat ini dikeluarkan yang bersangkutan masih Berdomisili di Desa Karombo Kecamatan Pekat Kabupaten Dompu.</p><p><br></p><p>Demikian surat keterangan ini kami berikan untuk dipergunakan sebagaimana mestinya.</p>';
+            quillPenutup.root.innerHTML = defaultPenutup;
+            taPenutup.value = defaultPenutup;
+            document.getElementById('p_penutup').innerHTML = defaultPenutup;
+        }
 
         // Live preview sync
         quillPembuka.on('text-change', function () {

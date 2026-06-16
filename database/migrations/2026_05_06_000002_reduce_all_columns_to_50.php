@@ -42,10 +42,10 @@ return new class extends Migration
 
         // ─── Tabel: kop_surats ──────────────────────────────────────────────
         Schema::table('kop_surats', function (Blueprint $table) {
-            $table->string('baris_1', 50)->nullable()->change();
-            $table->string('baris_2', 50)->nullable()->change();
-            $table->string('baris_3', 50)->nullable()->change();
-            $table->string('baris_4', 50)->nullable()->change();
+            $table->string('baris_1', 150)->nullable()->change();
+            $table->string('baris_2', 150)->nullable()->change();
+            $table->string('baris_3', 150)->nullable()->change();
+            $table->string('baris_4', 150)->nullable()->change();
             // logo tetap 150 — path file sistem
         });
 
@@ -82,10 +82,10 @@ return new class extends Migration
         });
 
         Schema::table('kop_surats', function (Blueprint $table) {
-            $table->string('baris_1', 100)->nullable()->change();
-            $table->string('baris_2', 100)->nullable()->change();
-            $table->string('baris_3', 100)->nullable()->change();
-            $table->string('baris_4', 100)->nullable()->change();
+            $table->string('baris_1', 150)->nullable()->change();
+            $table->string('baris_2', 150)->nullable()->change();
+            $table->string('baris_3', 150)->nullable()->change();
+            $table->string('baris_4', 150)->nullable()->change();
         });
 
         Schema::table('tanda_tangans', function (Blueprint $table) {

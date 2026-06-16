@@ -225,7 +225,7 @@
                 {{-- Legacy: template lama masih pakai isi_surat --}}
                 {!! $isiSurat !!}
             @else
-                <p>Yang bertanda tangan di bawah ini Kepala {{ $kopSurat->baris_3 }} {{ $kopSurat->baris_2 }} {{ $kopSurat->baris_1 }} menerangkan dengan sebenarnya kepada :</p>
+                <p>Yang bertanda tangan di bawah ini Kepala {{ \Str::title(strtolower($kopSurat->baris_3)) }} {{ \Str::title(strtolower($kopSurat->baris_2)) }} Kabupaten Dompu menerangkan dengan sebenar &#8209; sebenarnya kepada :</p>
             @endif
 
             {{-- TABEL DATA MASYARAKAT — SELALU OTOMATIS DARI DATA WARGA --}}
@@ -288,8 +288,8 @@
             @if($isiPenutup)
                 {!! $isiPenutup !!}
             @elseif(!$isiPembuka && !$isiSurat)
-                <p>Bahwa yang tersebut namanya di atas adalah benar-benar warga / penduduk Asli {{ $kopSurat->baris_3 }} {{ $kopSurat->baris_2 }} {{ $kopSurat->baris_1 }} dan sampai saat surat ini dikeluarkan yang bersangkutan masih Berdomisili di Dusun ............................{{ $kopSurat->baris_3 }} {{ $kopSurat->baris_2 }} {{ $kopSurat->baris_1 }}.</p>
-                <p style="margin-top:14px">Demikian surat Keterangan Berdomisili ini kami berikan untuk dipergunakan sebagaimana mestinya.</p>
+                <p>Bahwa yang tersebut namanya di atas adalah benar-benar warga / penduduk Asli {{ \Str::title(strtolower($kopSurat->baris_3)) }} {{ \Str::title(strtolower($kopSurat->baris_2)) }} Kabupaten Dompu dan sampai saat surat ini dikeluarkan yang bersangkutan masih Berdomisili di {{ \Str::title(strtolower($kopSurat->baris_3)) }} {{ \Str::title(strtolower($kopSurat->baris_2)) }} Kabupaten Dompu.</p>
+                <p style="margin-top:14px">Demikian surat keterangan ini kami berikan untuk dipergunakan sebagaimana mestinya.</p>
             @endif
         @endif
     </div>

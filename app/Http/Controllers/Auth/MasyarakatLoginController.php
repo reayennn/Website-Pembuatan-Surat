@@ -43,7 +43,7 @@ class MasyarakatLoginController extends Controller
         if (!$penduduk->isAktif()) {
             $statusLabel = $penduduk->status_warga;
             $tgl = $penduduk->tanggal_pindah
-                ? \Carbon\Carbon::parse($penduduk->tanggal_pindah)->translatedFormat('d F Y')
+                ? Carbon::parse($penduduk->tanggal_pindah)->translatedFormat('d F Y')
                 : null;
 
             if ($penduduk->isPindah()) {

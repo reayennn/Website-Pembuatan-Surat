@@ -332,8 +332,20 @@
         var taPembuka = document.getElementById('isi_pembuka');
         var taPenutup = document.getElementById('isi_penutup');
 
-        if (taPembuka.value.trim()) quillPembuka.root.innerHTML = taPembuka.value;
-        if (taPenutup.value.trim()) quillPenutup.root.innerHTML = taPenutup.value;
+        if (taPembuka.value.trim()) {
+            quillPembuka.root.innerHTML = taPembuka.value;
+        } else {
+            var defaultPembuka = '<p>Yang bertanda tangan di bawah ini Kepala Desa Karombo Kecamatan Pekat Kabupaten Dompu menerangkan dengan sebenar &#x2011; sebenarnya kepada :</p>';
+            quillPembuka.root.innerHTML = defaultPembuka;
+            taPembuka.value = defaultPembuka;
+        }
+        if (taPenutup.value.trim()) {
+            quillPenutup.root.innerHTML = taPenutup.value;
+        } else {
+            var defaultPenutup = '<p>Bahwa yang tersebut namanya di atas adalah benar-benar warga / penduduk Asli Desa Karombo Kecamatan Pekat Kabupaten Dompu dan sampai saat surat ini dikeluarkan yang bersangkutan masih Berdomisili di Desa Karombo Kecamatan Pekat Kabupaten Dompu.</p><p><br></p><p>Demikian surat keterangan ini kami berikan untuk dipergunakan sebagaimana mestinya.</p>';
+            quillPenutup.root.innerHTML = defaultPenutup;
+            taPenutup.value = defaultPenutup;
+        }
 
         // Live preview sync
         quillPembuka.on('text-change', function () {
